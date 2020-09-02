@@ -13,9 +13,13 @@ $app = require __DIR__ . '/../bootstrap/app.php';
 
 $app->any('{route:.*}', function($request, $response) {
   $response->withStatus(404, 'page not found');
-  $response->getBody()->write("Page not found");
+  // var_dump($response);
+  // die();
+  // $response->getBody()->write($request);
   return $response;
 });
+
+
 
 /**
  * 

@@ -42,6 +42,14 @@ if (!function_exists('base_path'))
     }
 }
 
+if (!function_exists('asset'))
+{
+    function asset($path)
+    {
+        return env('APP_URL') . "/{$path}";
+    }
+}
+
 if (!function_exists('config_path'))
 {
     function config_path($path = '')
