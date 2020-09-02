@@ -58,6 +58,40 @@ if (!function_exists('config_path'))
     }
 }
 
+if (!function_exists('db_connection'))
+{
+    function db_connection()
+    {
+        $host = env("DB_HOST");
+        $user = env("DB_USERNAME");
+        $password = env("DB_PASSWORD");
+        $db_name = env("DB_NAME");
+
+        return new PDO("mysql:host=$host;dbname=$db_name;charset=utf8", $user, $password);
+    }
+}
+
+if (!function_exists('query_builder'))
+{
+    function query_builder()
+    {
+        $connection = db_connection();
+       // create a new mysql query builder
+        return new \ClanCats\Hydrahon\Builder('mysql', function($query, $queryString, $queryParameters) use($connection)
+        {
+            $statement = $connection->prepare($queryString);
+            $statement->execute($queryParameters);
+
+            // when the query is fetchable return all results and let hydrahon do the rest
+            // (there's no results to be fetched for an update-query for example)
+            if ($query instanceof \ClanCats\Hydrahon\Query\Sql\FetchableInterface)
+            {
+                return $statement->fetchAll(\PDO::FETCH_ASSOC);
+            }
+        });
+    }
+}
+
 if (!function_exists('storage_path'))
 {
     function storage_path($path = '')
