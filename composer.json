@@ -23,8 +23,11 @@
         }
     },
     "scripts": {
-        "post-root-package-install": [
-            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        "start": [
+            "php -S localhost:8080 router.php"
         ]
-    }
+    },
+    "config": {
+        "process-timeout": 0
+      }
 }

@@ -10,7 +10,7 @@ class WelcomeController
     {
         $name = 'Clean Code Studio';
 
-        return $view('auth.home', compact('name'));
+        return $view('user.home', compact('name'));
     }
 
     public function show(View $view, $name, $id)
