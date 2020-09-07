@@ -10,15 +10,15 @@ class WelcomeController
     {
         $name = 'Clean Code Studio';
 
-        $qb = query_builder();
+        // $qb = query_builder();
 
-        // HYDRAHON
-        // https://clancats.io/hydrahon/master/
+        // // HYDRAHON
+        // // https://clancats.io/hydrahon/master/
 
-        $people = $qb->table('home_data');
-        $res = $people->select()->execute()[0];
+        // $people = $qb->table('home_data');
+        // $res = $people->select()->execute()[0];
         
-        return $view('user.home', $res);
+        return $view('user.home');
         // return $view('user.home', compact('name'));
     }
 

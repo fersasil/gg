@@ -9,4 +9,4 @@
 <body>
     <h1>Hello World!</h1>
 </body>
-</html>
+</html><?php /**PATH /home/gui/Documents/workshopMVC/gg/resources/views/user/home.blade.php ENDPATH**/ ?>
